@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time in Slovakia</title>
+    <link rel="stylesheet" href="indes1.css">
+</head>
+<body>
+    <div class="time-container">
+        <h1>Current Time in Slovakia</h1>
+        <p id="datetime"></p>
+    </div>
+
+    <script>
+        function updateTime() {
+            // Create a new Date object and adjust for Slovakia timezone (CET/CEST)
+            let now = new Date();
+            let options = { timeZone: 'Europe/Bratislava', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            let dateTimeStr = now.toLocaleString('en-GB', options);
+            document.getElementById('datetime').textContent = dateTimeStr;
+        }
+
+        setInterval(updateTime, 1000); // Update every second
+        updateTime(); // Initial call
+    </script>
+</body>
+</html>
