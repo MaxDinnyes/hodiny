@@ -12,6 +12,11 @@
         <p id="datetime"></p>
     </div>
 
+    <!-- Container for the GIF -->
+    <div id="gifContainer">
+        <img src="ezgif-1-8ca3bffc1b.gif" alt="Surprise GIF">
+    </div>
+
     <script>
         function updateTime() {
             // Create a new Date object and adjust for Slovakia timezone (CET/CEST)
@@ -23,6 +28,35 @@
 
         setInterval(updateTime, 1000); // Update every second
         updateTime(); // Initial call
+
+
+        let clickCount = 0;
+        let clickTimer;
+
+        document.addEventListener('click', function() {
+            clickCount++;
+
+            if (clickCount === 1) {
+                clickTimer = setTimeout(function() {
+                    clickCount = 0; // Reset count if not triple clicked
+                }, 400);
+            }
+
+            if (clickCount === 3) {
+                clearTimeout(clickTimer);
+                clickCount = 0;
+                showGif();
+            }
+        });
+
+        function showGif() {
+            const gifContainer = document.getElementById('gifContainer');
+            gifContainer.style.display = 'block';
+
+            setTimeout(function() {
+                gifContainer.style.display = 'none';
+            }, 3000); // Hide the GIF after 3 seconds
+        }
     </script>
 </body>
 </html>
