@@ -14,7 +14,7 @@
 
     <!-- Container for the GIF -->
     <div id="gifContainer">
-        <img src="ezgif-1-8ca3bffc1b.gif" alt="Surprise GIF">
+        <img id="gif" src="ezgif-1-8ca3bffc1b.gif" alt="Surprise GIF">
     </div>
 
     <script>
@@ -50,6 +50,10 @@
         });
 
         function showGif() {
+            const gifArray = ["ezgif-1-8ca3bffc1b.gif"];
+            const randomNumber = Math.floor(Math.random() * 2) + 1;
+            const imgElement = document.getElementById("gif");
+            imgElement.src = gifArray[randomNumber];
             const gifContainer = document.getElementById('gifContainer');
             gifContainer.style.display = 'block';
 
